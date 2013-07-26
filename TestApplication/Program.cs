@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
+using WinAuth;
 
 namespace TestApplication
 {
@@ -23,6 +23,8 @@ namespace TestApplication
         [STAThread]
         static void Main()
         {
+            DCOMAuth.CoInitializeSecurity(IntPtr.Zero, -1, IntPtr.Zero, IntPtr.Zero, (uint)DCOMAuth.RpcAuthnLevel.Connect, (uint)DCOMAuth.RpcImpLevel.Impersonate, IntPtr.Zero, (uint)DCOMAuth.EoAuthnCap.DynamicCloaking, IntPtr.Zero);                        
+            
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm());
